@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet"href="/static/css/styles.css"/>
+    <script src="https://kit.fontawesome.com/deb7f56e86.js" crossorigin="anonymous"></script>
+</head>
+<style>
+
+form {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    align-items: center;
+    margin-top: 10%;
+
+}
+.h1 {
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    align-items: center;
+}
+
+.box {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    margin-top: 10px;
+    align-items: center;
+
+}
+</style>
+
+
+<form method="GET">
+    <input type="text" name="Review" placeholder="Enter a word">
+    <button type="submit">look up</button>
+</form>
+{% block content %}
+<table>
+    {% for key in session.keys() %}
+        <div class="box"> 
+            <h1> {{ session[key] }} </h1>
+        </div>
+    {% endfor %}
+</table>
+
+{% endblock %}
+
