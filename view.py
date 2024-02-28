@@ -7,14 +7,14 @@ r = redis.Redis(host='localhost', port=6379, decode_responses=True)
 def post_comment():
     if request.method == 'GET':
         word = ""
-        data = request.args.get("Review", "").strip().upper
-        print(request.headers["Cookie"])
+        data = request.args.get("Review", "").strip().upper()
+        print(data)
         if data:
-            word = r.get(data.upper())
+            word = r.get(data)
             session[data] = f"{data}: {word}"
         else:
             session[data] = ""
         print(session)
         return render_template('speed.html', word=session)
     return render_template('speed.html')
-app.config['SECRET_KEY'] = 'eered'
+app.config['SECRET_KEY'] = 'ered'
