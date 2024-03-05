@@ -8,13 +8,13 @@ def post_comment():
     if request.method == 'GET':
         word = ""
         data = request.args.get("Review", "").strip().upper()
-        print(data)
         if data:
             word = r.get(data)
-            session[data] = f"{data}: {word}"
-        else:
-            session[data] = ""
-        print(session)
-        return render_template('speed.html', word=session)
+            if "word" not in session:
+                session["word"] = []
+            #temp_set = set(session.get("word", []))
+            session["word"].append((data, word))
+
+        return render_template('speed.html', words=session.get('word', []))
     return render_template('speed.html')
-app.config['SECRET_KEY'] = 'ered'
+app.config['SECRET_KEY'] = 'deddldlddll'

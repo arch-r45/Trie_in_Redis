@@ -30,6 +30,9 @@ input[type="text"] {
     border-width: thin;
 
 }
+input:focus {
+        outline:none;
+    }
 button {
     background-color: transparent;
     color: white;
@@ -37,6 +40,7 @@ button {
     border-style:solid;
     border-color: white;
     border-width: thin;
+    font-size: 25px;
 
 }
 h1 {
@@ -46,7 +50,9 @@ h1 {
     font-size: 20px;
     margin-bottom: 4%;
 }
-
+input {
+    font-size: 25px;
+}
 .box {
     display: flex;
     position: relative;
@@ -77,9 +83,9 @@ h1 {
     </form>
     {% block content %}
     <table>
-        {% for key in session.keys() %}
+        {% for word, definition in session['word'] %}
             <div class="box"> 
-                <h1> {{ session[key] }} </h1>
+                <h1>{{ word }}: {{ definition }}</h1>
             </div>
         {% endfor %}
     </table>
