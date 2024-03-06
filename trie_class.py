@@ -14,7 +14,7 @@ class Trie():
             node = node.children[char]
         node.word = True
     def autocomplete(self, prefix):
-        res = []
+        res = set()
         node = self.root
         curr = ""
         for char in prefix:
@@ -23,17 +23,16 @@ class Trie():
             curr += char
             node = node.children[char]
         if node.word == True:
-            res.append(curr)
+            res.add(curr)
         def dfs(cur, node):
             if node.word == True:
-                res.append("".join(cur))
+                res.add("".join(cur))
             if node == None:
                 return
-            
             for children in node.children:
                 cur.append(children)
                 dfs(cur, node.children[children])
                 cur.pop()
         cur = list(curr)
         dfs(cur, node)
-        return res
+        return list(res)
