@@ -72,6 +72,24 @@ input {
     align-items: center;
     margin-top: 5%;
 }
+.autocorrect {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    align-items: center;
+    margin-top: 5%;
+}
+.autocorrect-box {
+    border-color: white;
+    border-width: thin;
+    display: flex;
+    position: relative;
+    margin-top: 10px;
+    align-items: center;
+
+}
+
+
 </style>
 <body>
     <div class="icon">
@@ -81,6 +99,11 @@ input {
         <input type="text" name="Review" placeholder="Enter a word">
         <button type="submit">look up</button>
     </form>
+    <div class="autocorrect">
+        <div class="autocorrect-box">
+
+        </div>
+    </div>
     {% block content %}
     <table>
         {% for word, definition in session['word'] %}
