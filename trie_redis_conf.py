@@ -19,11 +19,6 @@ lexographic order and return the top k elements.  Obviously in other application
 return the top k "most frequent" words.  However there is only about 2000 words in my dataset so no need.
 """
 def load_trie(trie, k):
-    """
-    Probably the better way to do this is to start at the root node of the trie and just grab all children
-    but I have already loaded everything into the trie so I can use the same dataset.  Maybe I will change 
-    this to allow it to generalize better
-    """
     def dfs(node, curr):
         if node.children == None:
             return
@@ -38,11 +33,10 @@ def load_trie(trie, k):
     dfs(trie.root, [])
 
 
-file_path = "dummy.csv"
+file_path = "Shakespeare_glossary_dict.csv"
 k = 3
 trie_object = populate_trie(file_path)
 load_trie(trie_object, k)
-print(r.lrange("B", 0, -1))
 
 
 
