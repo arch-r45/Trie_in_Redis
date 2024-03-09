@@ -77,16 +77,34 @@ input {
     justify-content: center;
     position: relative;
     align-items: center;
-    margin-top: 5%;
+    margin-top: 2%;
 }
 .autocorrect-box {
     border-color: white;
     border-width: thin;
     display: flex;
     position: relative;
-    margin-top: 10px;
+    margin: 5px;
     align-items: center;
+    justify-content: space-around;
 }
+.suggestion-box {
+    color: white;
+    font-family: sans-serif;
+    font-weight: 100;
+    font-size: 20px;
+    padding: 10px;
+    flex: 1;
+    margin: 5px;
+    border-right-style: solid;
+    border-color: transparent;
+    text-align: center;
+    border-width: thin;
+}
+.suggestion-box.has-value {
+    border-color: white; 
+}
+
 </style>
 <body>
     <div class="icon">
@@ -98,6 +116,9 @@ input {
     </form>
     <div class="autocorrect">
         <div class="autocorrect-box">
+            <div class="suggestion-box" id="suggestion-1"></div>
+            <div class="suggestion-box" id="suggestion-2"></div>
+            <div class="suggestion-box" id="suggestion-3"></div>
         </div>
     </div>
     {% block content %}
@@ -110,7 +131,6 @@ input {
     </table>
     {% endblock %}
 </body>
-
 <script>
     function suggestions(event) {
         const inputValue = event.target.value;
@@ -124,8 +144,16 @@ input {
         })
         .then(response => response.json())
         .then(data => {
-            console.log('Success:', data);
-        })
-        
-    }
-</script>
+            for (let i = 0; i < 3; i++) {
+                const div = document.querySelector(`#suggestion-${i + 1}`);
+                div.innerHTML = data["Suggestions"][i] || '';
+
+                if (data["Suggestions"][i]) {
+                    div.classList.add('has-value');
+                } else {
+                    div.classList.remove('has-value');
+            }}
+        });
+
+        }
+</script> 
