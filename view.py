@@ -39,3 +39,13 @@ def post_comment():
         return render_template('speed.html', words=session.get("word", []))
     return render_template('speed.html')
 app.config['SECRET_KEY'] = 'ppepe'
+
+redis_trie = redis.Redis(host='localhost', port=6380, decode_responses=True)
+@app.route('/autocomplete', methods=['POST'])
+def auto():
+    input_value = request.json["inputValue"]
+    suggestions = redis_trie.lrange(input_value.upper(), 0, -1)
+    print(suggestions)
+    
+    return {"Suggestions": suggestions}
+
