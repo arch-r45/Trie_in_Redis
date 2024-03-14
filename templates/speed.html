@@ -127,9 +127,9 @@ input {
     </form>
     <div class="autocorrect">
         <div class="autocorrect-box">
-            <div class="suggestion-box" id="suggestion-1"></div>
-            <div class="suggestion-box" id="suggestion-2"></div>
-            <div class="suggestion-box" id="suggestion-3"></div>
+            <div class="suggestion-box" onclick="grabber(event)" id="suggestion-1"></div>
+            <div class="suggestion-box" onclick="grabber(event)" id="suggestion-2"></div>
+            <div class="suggestion-box" onclick="grabber(event)" id="suggestion-3"></div>
         </div>
     </div>
     {% block content %}
@@ -167,4 +167,11 @@ input {
         });
 
         }
+    function grabber(event) {
+        console.log("event: ", event.target.innerHTML);
+        const queryParam = encodeURIComponent(event.target.innerHTML);
+        window.location.href = 'http://127.0.0.1:5000/?Review=' + queryParam; 
+
+
+    }
 </script> 

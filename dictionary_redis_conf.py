@@ -7,9 +7,5 @@ def load_into_redis(file_path):
             r.set(k_v_list[0], "".join(k_v_list[1:]))
 
 
-
 load_into_redis("Shakespeare_glossary_dict.csv")
-
-
-
 print(r.get("ANGEL"))
