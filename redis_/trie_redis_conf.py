@@ -1,8 +1,8 @@
 import redis
-import trie_class
+import redis_.trie_class 
 r = redis.Redis(host='localhost', port=6380, decode_responses=True)
 def populate_trie(file_path):
-    trie = trie_class.Trie()
+    trie = redis_.trie_class.Trie()
     with open(file_path, 'r', newline='') as file:
         for row in file:
             k_v_list = row.split(",")
