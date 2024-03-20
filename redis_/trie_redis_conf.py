@@ -15,7 +15,7 @@ the word.  Once you have a substring, you call the method "autocomplete" and sto
 for that substring.  
 In this case, because we have a static amount of words that are never changing, and we never need to live 
 update these as an application like twitter would need to, we can just sort the words based on 
-lexographic order and return the top k elements.  Obviously in other applications, here is where you may
+lexicographic order and return the top k elements.  Obviously in other applications, here is where you may
 return the top k "most frequent" words.  However there is only about 2000 words in my dataset so no need.
 """
 def load_trie(trie, k):
