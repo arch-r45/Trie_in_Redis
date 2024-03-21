@@ -8,7 +8,7 @@ Search autocomplete, like used with many companies such as Amazon, Google and Ub
 
 ![alt text][logo]
 
-[logo]: https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png
+[logo]: https://github.com/arch-r45/Implementing-Trie-in-Redis-for-Fast-Prefix-Lookups--Glossary/blob/main/pictures/Google%20Search%20Picture.png
 
 
 ### Brief Overview
