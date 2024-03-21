@@ -16,7 +16,7 @@ Search autocomplete, like used with many companies such as Amazon, Google and Ub
 
 In order to implement a scalable search autocomplete, we need the right data structures.  If our dataset is  small, we can just store all our words in a relational database and fetch them using simple SQL queries using the LIKE command.  
 
-``` SQL
+```sql
 SELECT * FROM "words"
 WHERE query Like '%prefix'
 LIMIT 3
