@@ -35,7 +35,9 @@ Trie.insert is how we are going to load values into our trie, breaking up each w
 
 There are different options for us to implement the Trie in a database.  Document stores like MongoDB can serialize the trie and store it.  However, I choose to use an in-memory Key Value Store like Redis to represent the Trie.  How I did this was I used the Trie to pregenerate all the proper suggestions for each prefix, and then set each prefix to a key, and had the list of suggestions as the value. The problem with doing it this way is if we need to change the Trie, we need to basically rewrite the entire Database.  However, this is fine if your search autocomplete does not change often, as very rarely would you need to update your trie more frequentley than weekly in practice.  A special exception is Twitter Search, their autocomplete seems to be updated very frequently, as whenever you search, recent trending tweets come first.  
 
-[logo]: https://github.com/arch-r45/Implementing-Trie-in-Redis-for-Fast-Prefix-Lookups--Glossary/blob/main/pictures/Google%20Search%20Picture.png
+
+![alt text][logo]
+[logo]: https://github.com/arch-r45/Implementing-Trie-in-Redis-for-Fast-Prefix-Lookups--Glossary/blob/main/pictures/Twitter%20Search.png
 
 
 ```python
