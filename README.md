@@ -37,6 +37,7 @@ There are different options for us to implement the Trie in a database.  Documen
 
 
 ![alt text][twitter]
+
 [twitter]: https://github.com/arch-r45/Implementing-Trie-in-Redis-for-Fast-Prefix-Lookups--Glossary/blob/main/pictures/Twitter%20Search.png
 
 
