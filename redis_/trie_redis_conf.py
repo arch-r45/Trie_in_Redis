@@ -26,7 +26,6 @@ def load_trie(trie, k):
             curr.append(children)
             suggestions = trie.autocomplete("".join(curr))
             suggestions = sorted(suggestions)[:k]
-            print(suggestions)
             r.rpush("".join(curr), *suggestions)
             dfs(node.children[children], curr)
             curr.pop()
