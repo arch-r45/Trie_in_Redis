@@ -33,7 +33,7 @@ Trie.insert is how we are going to load values into our trie, breaking up each w
 
 ### Redis
 
-There are different options for us to implement the Trie in a database.  Document stores like MongoDB can serialize the trie and store it.  However, I choose to use an in-memory Key Value Store like Redis to represent the Trie.  How I did this was I used the Trie to pregenerate all the proper suggestions for each prefix, and then set each prefix to a key, and had the list of suggestions as the value. The problem with doing it this way is if we need to change the Trie, we need to basically rewrite the entire Database.  However, this is fine if your search autocomplete does not change often, as very rarely would you need to update your trie more frequentley than weekly in practice.  A special exception is Twitter Search, their autocomplete seems to be updated very frequently, as whenever you search, recent trending tweets come first.  
+There are different options for us to implement the Trie in a database.  Document stores like MongoDB can serialize the trie and store it.  However, I choose to use an in-memory Key Value Store like Redis to represent the Trie.  How I did this was I used the Trie to generate all the proper suggestions for each prefix, and then set each prefix to a key, and had the list of suggestions as the value. The problem with doing it this way is if we need to change the Trie, we need to basically rewrite the entire Database.  However, this is fine if your search autocomplete does not change often, as very rarely would you need to update your trie more frequentley than weekly in practice.  A special exception is Twitter Search, their autocomplete seems to be updated very frequently, as whenever you search, recent trending tweets come first.  
 
 
 ![alt text][twitter]
@@ -56,7 +56,10 @@ def load_trie(trie, k):
             curr.pop()
     dfs(trie.root, [])
 ```
-I pass the trie into the load_trie function and do a Depth First Search on all possible prefixes.  I then push these suggestions into the Redis DB with the key being the prefix and the value being the suggestions.  
+I pass the trie into the load_trie function and do a Depth First Search on all possible prefixes.  I then push these suggestions into the Redis DB with the key being the prefix and the value being the suggestions. 
+
+
+This allows for super quick lookup times into our key value store and the top 3 words returned instantly.
 
 
 
